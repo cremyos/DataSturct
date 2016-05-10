@@ -1,6 +1,6 @@
 /*
  ************************************************
- * Name : match_common.c
+ * Name : match_KMP.c
  * Author : Lniper
  * Date : 2016-05-07
  * Aim : Matching the string.
