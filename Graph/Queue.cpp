@@ -48,7 +48,7 @@ int Queue::DelQueue(ElemType e)
 		return -1;
 	e = q->queue_data[q->front];
 	q->front  = (q->front + 1)%MAXSIZE;
-	cout<<"Delete the element is "<<e<<endl;
+//	cout<<"Delete the element is "<<e<<endl;
 	return 0;
 }
 
@@ -68,7 +68,7 @@ BOOL Queue::IsEmpty()
 		return 0;
 }
 
-int main()
+/*int main()
 {
 	Queue Que;	
 	int i = 1;
@@ -84,4 +84,4 @@ int main()
 	
 	Que.GetQueueTop();
 	return 0;
-}
+}*/

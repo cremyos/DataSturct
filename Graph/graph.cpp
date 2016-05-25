@@ -89,16 +89,79 @@ void C_Graph::DFSTravel_AdjList(GraphAdjList *G)
 			DFS_AdjList(G, i);
 }
 
+void C_Graph::BFSTravel_Martix(int graph[][9])
+{
+	int i, j;
+	ElemType e = 0;
+
+	for(i = 0; i < 9; i++)
+		visited_BFS[i] = 0;
+	for(i = 0; i < 9; i++) {
+		if(!visited_BFS[i]) {
+			visited_BFS[i] = 1;
+			printf("%c ", 'A' + i);
+			EnQueue(i);
+			while(!IsEmpty()) {
+				DelQueue(e);
+				for(j = 0; j < 9; j++) {
+					if(graph[i][j] == 1 && !visited_BFS[j]) {
+						visited_BFS[j] = 1;				
+						printf("%c ", 'A'+j);
+						EnQueue(j);
+					}
+				}
+			}
+		}	
+	}
+}
+
+void C_Graph::BFSTravel_AdjList(GraphAdjList *G)
+{
+	int i;
+	EdgeNode *p;
+	
+	for(i = 0; i < 9; i++)
+		visited_BFSAdjList[i] = 0;
+	for(i = 0; i < 9; i++) {
+		if(!visited_BFSAdjList[i]) {
+			visited_BFSAdjList[i] = 1;
+			printf("%c ", G->adjList[i].data);
+			EnQueue(i);
+			while(!IsEmpty()) {
+				DelQueue(i);
+				p = G->adjList[i].firstedge;
+				while(p) {
+					if(!visited_BFSAdjList[p->adjvex]) {
+						visited_BFSAdjList[p->adjvex] = 1;
+						printf("%c ", G->adjList[p->adjvex].data);
+						EnQueue(p->adjvex);
+					}
+					p = p->next;
+				}
+			}
+		}
+			
+	}
+}
+
 int main()
 {
 	C_Graph g;
 	GraphAdjList *G;
 	G = new GraphAdjList;
 
+	cout<<"DFSTravel_Martix: ";
 	g.DFSTravel_Martix(graph);
 	cout<<endl;
 	g.CreateALGraph(G);
+	cout<<"DFSTravel_AdjList: ";
 	g.DFSTravel_AdjList(G);
+	cout<<endl;
+	cout<<"BFSTravel_Martix: ";
+	g.BFSTravel_Martix(graph);
+	cout<<endl;
+	cout<<"BFSTravel_AdjList: ";
+	g.BFSTravel_AdjList(G);
 	cout<<endl;
 	delete G;
 	return 0;

@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "Queue.h"
+#include "Queue.cpp"
 
 using namespace std;
 
@@ -12,6 +14,8 @@ using namespace std;
 
 int visited[9];
 int visited_AdjList[9];
+int visited_BFS[9];
+int visited_BFSAdjList[9];
 
 int graph[9][9] = {
 0, 1, 0, 0, 0, 1, 0, 0, 0,
@@ -25,6 +29,7 @@ int graph[9][9] = {
 0, 1, 1, 1, 0, 0, 0, 0, 0
 };
 
+//typedef int ElemType;
 typedef char VertexType;
 typedef int EdgeType;
 
@@ -48,7 +53,7 @@ typedef struct
 }GraphAdjList;
 
 
-class C_Graph
+class C_Graph:public Queue
 {
 private:
 	EdgeNode *Edge;
@@ -56,7 +61,7 @@ private:
 	GraphAdjList *G;
 
 public:
-	C_Graph();
+	C_Graph();	
 	~C_Graph();
 
 	void CreateALGraph(GraphAdjList *G);
@@ -64,6 +69,8 @@ public:
 	void DFSTravel_Martix(int graph[][9]);
 	void DFS_AdjList(GraphAdjList *G, int i);
 	void DFSTravel_AdjList(GraphAdjList *G);
+	void BFSTravel_Martix(int graph[][9]);
+	void BFSTravel_AdjList(GraphAdjList *G);
 };
 
 #endif
