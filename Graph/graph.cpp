@@ -103,9 +103,9 @@ void C_Graph::BFSTravel_Martix(int graph[][9])
 	int i, j;
 	ElemType e = 0;
 
-	for(i = 0; i < 9; i++)
+	for(i = 0; i < MAXVEX; i++)
 		visited_BFS[i] = 0;
-	for(i = 0; i < 9; i++) {
+	for(i = 0; i < MAXVEX; i++) {
 		if(!visited_BFS[i]) {
 			visited_BFS[i] = 1;
 			printf("%c ", 'A' + i);

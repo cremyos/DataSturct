@@ -8,3 +8,8 @@ MST: MST.c
 	gcc -g MST.c -o MST
 clean_MST:
 	rm MST
+
+TopologicalSort: TopologicalSort.cpp
+	g++ -g TopologicalSort.cpp -o TopologicalSort
+clean_TopologicalSort:
+	rm TopologicalSort
