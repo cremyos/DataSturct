@@ -1,3 +1,10 @@
+/************************************************
+ * Name : MST.c
+ * Date : 2016-05-30
+ * Author : Lniper
+ * Aim : MiniSpanTree using Prim and Kruskal.
+ ************************************************
+ */
 #include <stdio.h>
 #include <stdlib.h>
 

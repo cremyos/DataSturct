@@ -1,3 +1,12 @@
+/************************************************
+ * Name : graph.cpp
+ * Date : 2016-05-30
+ * Author : Lniper
+ * Aim : Create the graph adjlist and Martix. 
+ *       Travel the graph.
+ ************************************************
+ */
+
 #include "graph.h"
 
 C_Graph::C_Graph()
