@@ -18,12 +18,16 @@ void Fabonacci(int F[])
 	int x,y,i,sum;
 	
 	x=1,y=1;
-	F[1] = F[2] = x;
-	for(i=3;i<=20;i++) {
+	F[0] = F[1] = x;
+	for(i=2;i<20;i++) {
 		sum=x+y;
 		F[i] = sum;
 		x=y;
 		y=sum;
+	}
+	
+	for(i = 0; i < 20; i++) {
+		cout<<"Fibonacci "<<i<<" : "<<F[i]<<endl;
 	}
 }
 
@@ -31,7 +35,7 @@ int CSearch::Fibonacci_Search(int n, int key)
 {
 	int low, high, mid, i, k;
 	
-	low = 1;
+	low = 0;
 	high = n;
 	k = 0;
 	Fabonacci(F);
@@ -40,22 +44,19 @@ int CSearch::Fibonacci_Search(int n, int key)
 		k++;
 	for(i = n; i < F[k] - 1; i++)
 		array[i] = array[n];
-	for(i = 1; i < 21; i++)
-		cout<<array[i]<<endl;
 		
 	while(low <= high) {
-		cout<<"line"<<__LINE__<<": k = "<<k<<" || element = "<<F[k-1] - 1<<endl;
-		mid = low - 1+F[k-1] - 1;
+		cout<<"line"<<__LINE__<<": k = "<<k<<" || element = "<<F[k-1]<<endl;
+		mid = low  + F[k - 1] - 1;
 		cout<<"mid = "<<mid<<endl;
 		if (key < array[mid]) {
 			high = mid - 1;
 			k -= 1;
-		}
-		else if(key > array[mid]) {
+		}else if(key > array[mid]) {
 			low = mid + 1;
+			cout<<"low = "<<low<<endl;
 			k -= 2;
-		}
-		else {
+		}else {
 			if (mid <= n)
 				return mid;
 			else 
@@ -69,9 +70,9 @@ int main(void)
 {
 	CSearch find1;
 	
-	cout<<"Fibonacci Search: ";
+	cout<<"Binary Search: ";
 	if(find1.Fibonacci_Search(MAXSIZE, 10))
-		printf("position = %d\n", find1.Fibonacci_Search(MAXSIZE-1, 10));
+		printf("position = %d\n", find1.Fibonacci_Search(MAXSIZE-1, 12));
 	else 
 		printf("Can't find the element");
 		
