@@ -117,9 +117,22 @@ int CSearch::Delete(BiTree &T)
 int main(void)
 {
 	CSearch find1;
-	
-
 	int i;
+	
+	int array_BiTree[] = {MAXSIZE_BT-1, 4, 5, 2, 1, 0, 9, 3, 7, 6, 8};
+	
+	find1.T = new BiTNode;
+	find1.T = NULL;	
+	
+	for(i = 1; i < MAXSIZE_BT; i++) {
+		cout<<"array_BiTree [ "<<i<<" ] = "<<array_BiTree[i]<<endl;
+		find1.BTree_Insert(find1.T, array_BiTree[i]);		
+	}
+	
+	/**
+	 * Visit the BiTree
+	 */
+	find1.PreTraverse(find1.T);
 	
 	cout<<"Binary Tree Search: "<<endl;
 	if(find1.BTree_Search(find1.T, 5))

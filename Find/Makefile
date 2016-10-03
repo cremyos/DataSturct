@@ -6,6 +6,9 @@ Fibonacci_Search:
 	g++ -g Fibonacci_Search.cpp -o Fibonacci_Search
 BTree_Search:
 	g++ -g BTree_Search.cpp -o BTree_Search
+AVL_Tree:
+	g++ -g AVL_Tree.cpp -o AVL_Tree
+
 
 clean_Sequential:
 	rm Sequential_Search
@@ -15,3 +18,5 @@ clean_Fibonacci:
 	rm Fibonacci_Search
 clean_BTree:
 	rm BTree_Search
+clean_AVLTree:
+	rm AVL_Tree
