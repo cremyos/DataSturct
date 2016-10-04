@@ -36,7 +36,8 @@ class CAVLBiTree
 	void Create_AVL(AVLBiTree &AVL_T, int x);							///< Create the AVL Tree
 	int GetHigh(AVLBiTree &AVL_T);										///< Get the high of the tree
 	int max(int a, int b);												///< Return the max number
-	void AVL_PreTraverse(AVLBiTree &AVL_T);								///Visit the Tree
+	void AVL_PreTraverse(AVLBiTree &AVL_T);								///< Visit the Tree
+	void DeleteAVL_Node(AVLBiTree &AVL_T, int x);						///< Delete the AVL Tree node
 };
 
 #endif

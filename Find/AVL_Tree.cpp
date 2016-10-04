@@ -144,6 +144,65 @@ void CAVLBiTree::AVL_PreTraverse(AVLBiTree &AVL_T)
 	AVL_PreTraverse(AVL_T->rchild);
 }
 
+/**
+ * Delete the AVL Tree node
+ */
+void CAVLBiTree::DeleteAVL_Node(AVLBiTree &AVL_T, int x)
+{
+	if(AVL_T == NULL)
+		return ;
+
+	if(x < AVL_T->data) {
+		DeleteAVL_Node(AVL_T->lchild, x);
+
+		if(2 == GetHigh(AVL_T->rchild) - GetHigh(AVL_T->lchild)) {
+			if(AVL_T->rchild->lchild && GetHigh(AVL_T->rchild->lchild) > GetHigh(AVL_T->rchild->rchild))
+				RL_Rotate(AVL_T);
+			else
+				R_Rotate(AVL_T);
+		}
+	} else if(x > AVL_T->data) {
+		DeleteAVL_Node(AVL_T->rchild, x);
+
+		if(2 == GetHigh(AVL_T->lchild) - GetHigh(AVL_T->rchild)) {
+			if(AVL_T->lchild->rchild && GetHigh(AVL_T->lchild->rchild) > GetHigh(AVL_T->lchild->lchild))
+				LR_Rotate(AVL_T);
+			else
+				L_Rotate(AVL_T);
+		}
+	} else {
+		if(AVL_T->lchild && AVL_T->rchild) {
+			AVLBiTree p;
+
+			p = AVL_T->rchild;
+			while(p->lchild != NULL)
+				p = p->lchild;
+			AVL_T->data = p->data;
+			DeleteAVL_Node(AVL_T->rchild, p->data);
+			if(2 == GetHigh(AVL_T->lchild) - GetHigh(AVL_T->rchild)) {
+				if(AVL_T->lchild->rchild && GetHigh(AVL_T->lchild->rchild) > GetHigh(AVL_T->lchild->lchild))
+					LR_Rotate(AVL_T);
+				else
+					L_Rotate(AVL_T);
+			}
+		} else {
+			AVLBiTree p;
+
+			p = AVL_T;
+			if(AVL_T->lchild == NULL)
+				AVL_T = AVL_T->rchild;
+			else if(AVL_T->rchild == NULL)
+				AVL_T = AVL_T->lchild;
+
+			delete p;
+		}
+	}
+
+	if(AVL_T)
+		AVL_T->high = max(GetHigh(AVL_T->lchild), GetHigh(AVL_T->rchild)) + 1;
+		
+}
+
 int main()
 {
 	int number[10] = {3, 2, 1, 4, 5, 6, 7, 10, 9, 8};
@@ -162,6 +221,33 @@ int main()
 		cav1.Create_AVL(AVL_T, number[i]);
 		cav1.AVL_PreTraverse(AVL_T);
 	}
+	cout<<endl;
+	
+	cout<<"Delete the 8 Node: "<<endl;
+	cav1.DeleteAVL_Node(AVL_T, 8);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+
+	cout<<"Insert the 8 Node: "<<endl;
+	cav1.Create_AVL(AVL_T, 8);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+	
+	cout<<"Delete the 9 Node: "<<endl;
+	cav1.DeleteAVL_Node(AVL_T, 9);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+
+	cout<<"Insert the 9 Node: "<<endl;
+	cav1.Create_AVL(AVL_T, 9);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+	
+	cout<<"Delete the 7 Node: "<<endl;
+	cav1.DeleteAVL_Node(AVL_T, 7);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+	
 	return 0;
 }
      
