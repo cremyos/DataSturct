@@ -19,6 +19,7 @@ class CSort
 {
  public:
 	int *array;
+	int *array_temp;
 
 	/**
 	 * Common function
@@ -43,6 +44,21 @@ class CSort
 	 * Insert Sort
 	 */
 	Status InsertSort(int *array);								///< Insert sort
+
+	/**
+	 * Heap Sort
+	 */
+	Status HeapSortMAX_Down(int *array, int len, int CNode);			///< Adjust Heap sort MAXDown
+	Status CreateHeapMAX(int *array, int len);							///< Create the heap sort in max down
+	Status HeapMAX(int *array, int len);								///< MAXDown heap sort
+	
+	Status HeapSortMIN_Down(int *array, int len, int CNode);			///< Adjust Heap sort MinDown
+	Status CreateHeapMIN(int *array, int len);							///< Create the heap sort in mindown
+	Status HeapMIN(int *array, int len);								///< MinDown heap Sort
+	
+
+	
+	
 };
 
 /**
@@ -56,7 +72,18 @@ CSort::CSort()
 	for(; i < MAXSIZE; i++) {
 		array[i] = MAXSIZE - i;
 	}
-		
+
+	array_temp = new int[MAXSIZE];
+	array_temp[0] = 3;
+	array_temp[1] = 9;
+	array_temp[2] = 5;
+	array_temp[3] = 4;
+	array_temp[4] = 10;
+	array_temp[5] = 0;
+	array_temp[6] = 12;
+	array_temp[7] = 6;
+	array_temp[8] = 7;
+	array_temp[9] = 8;
 }
 
 /**
@@ -87,6 +114,7 @@ void CSort::Print(int *array)
 CSort::~CSort()
 {
 	delete array;
+	delete array_temp;
 }
 
 #endif
