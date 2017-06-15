@@ -205,7 +205,7 @@ void CAVLBiTree::DeleteAVL_Node(AVLBiTree &AVL_T, int x)
 
 int main()
 {
-	int number[10] = {3, 2, 1, 4, 5, 6, 7, 10, 9, 8};
+	int number[6] = {13, 24, 37, 48, 53, 90};//{3, 2, 1, 4, 5, 6, 7, 10, 9, 8};
 	int i = 0;
 	CAVLBiTree cav1;
 	AVLBiTree AVL_T;
@@ -216,13 +216,14 @@ int main()
 	AVL_T->rchild = NULL;
 	AVL_T->high = 0;
 	
-	for(i = 1; i < 10; i++) {
+	for(i = 1; i < 6; i++) {
 		cout<<"i = "<<i<<endl;
 		cav1.Create_AVL(AVL_T, number[i]);
 		cav1.AVL_PreTraverse(AVL_T);
 	}
 	cout<<endl;
 	
+#if 0
 	cout<<"Delete the 8 Node: "<<endl;
 	cav1.DeleteAVL_Node(AVL_T, 8);
 	cav1.AVL_PreTraverse(AVL_T);
@@ -247,7 +248,13 @@ int main()
 	cav1.DeleteAVL_Node(AVL_T, 7);
 	cav1.AVL_PreTraverse(AVL_T);
 	cout<<endl;
-	
+#endif
+
+	cout<<"Delete the 48: "<<endl;
+	cav1.DeleteAVL_Node(AVL_T, 48);
+	cav1.AVL_PreTraverse(AVL_T);
+	cout<<endl;
+
 	return 0;
 }
      
